@@ -26,6 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Text('Execute'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              print('Open form person');
+              Navigator.pushNamed(context, 'add_person');
+            },
+            child: Text('Add Form Person'),
+          ),
         ],
       ),
     );
