@@ -30,10 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Center(child: Text('Home Screen')),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
               Person person = Person(name: 'John Doe');
               _database.insertPerson(person);
               print('Person added');
+              await refreshGetAll();
             },
             child: Text('Execute'),
           ),
