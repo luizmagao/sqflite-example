@@ -18,4 +18,9 @@ class Person {
     data['age'] = age;
     return data;
   }
+
+  @override
+  String toString() {
+    return 'Person {id: $id, name: $name, age: $age}';
+  }
 }

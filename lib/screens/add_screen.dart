@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:sqlite/db/sqflite_db.dart';
+import 'package:sqlite/models/person.dart';
 
 class AddScreen extends StatefulWidget {
   const AddScreen({super.key});
@@ -9,6 +10,7 @@ class AddScreen extends StatefulWidget {
 }
 
 class _AddScreenState extends State<AddScreen> {
+  final SqfliteDb _database = SqfliteDb.getInstance();
   TextEditingController name = TextEditingController();
   TextEditingController age = TextEditingController();
 
@@ -37,6 +39,17 @@ class _AddScreenState extends State<AddScreen> {
               onPressed: () {
                 print('send object person');
                 print('===> ${name.text}, ${age.text}');
+
+                try {
+                  Person person = Person(
+                    name: name.text,
+                    age: int.parse(age.text),
+                  );
+
+                  _database.insertPerson(person);
+                } catch (error) {
+                  print(error);
+                }
               },
               child: Text('Enviar'),
             ),
