@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       List<Person> listPerson = snapshot.data!;
 
-                      return Expanded(
+                      return SizedBox.expand(
                         child: ListView.builder(
                           itemCount: listPerson.length,
                           itemBuilder: (context, index) {
