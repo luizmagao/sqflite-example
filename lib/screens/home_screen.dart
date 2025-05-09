@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Column(
         children: [
+          SizedBox(height: 100),
           Center(child: Text('Home Screen')),
           ElevatedButton(
             onPressed: () async {
