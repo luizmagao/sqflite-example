@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:sqlite/db/sqflite_db.dart';
 import 'package:sqlite/models/person.dart';
 
 class EditScreen extends StatefulWidget {
-  const EditScreen({super.key});
+  Person? person;
+  EditScreen({super.key, this.person});
 
   @override
   State<EditScreen> createState() => _EditScreenState();
@@ -16,6 +18,13 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final person = ModalRoute.of(context)?.settings.arguments as Person;
+
+    if (person != null) {
+      name.text = person.name.toString();
+      age.text = person.age.toString();
+    }
+
     return Scaffold(
       appBar: AppBar(title: Text('Editar Pessoa')),
       body: Center(
@@ -42,12 +51,13 @@ class _EditScreenState extends State<EditScreen> {
                 print('===> ${name.text}, ${age.text}');
 
                 try {
-                  Person person = Person(
+                  Person data = Person(
+                    id: int.parse(person.id.toString()),
                     name: name.text,
                     age: int.parse(age.text),
                   );
 
-                  _database.insertPerson(person);
+                  _database.updatePerson(data);
 
                   Navigator.pushReplacementNamed(context, 'home');
                 } catch (error) {

@@ -13,7 +13,7 @@ class PersonWidget extends StatelessWidget {
       subtitle: Text(person.age.toString()),
       trailing: IconButton(
         onPressed: () {
-          Navigator.pushReplacementNamed(context, 'edit_person');
+          Navigator.pushNamed(context, 'edit_person', arguments: person);
         },
         icon: Icon(Icons.edit, color: Colors.blueAccent),
       ),

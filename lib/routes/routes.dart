@@ -7,7 +7,7 @@ class Routes {
   static final List<Map<String, dynamic>> _routeDefinitions = [
     {'name': 'home', 'widget': const HomeScreen()},
     {'name': 'add_person', 'widget': const AddScreen()},
-    {'name': 'edit_person', 'widget': const EditScreen()},
+    {'name': 'edit_person', 'widget': EditScreen()},
   ];
 
   static Map<String, Widget Function(BuildContext)> routes = {

@@ -43,6 +43,18 @@ class SqfliteDb {
     await showPeople();
   }
 
+  void updatePerson(Person person) async {
+    final db = await database;
+    db.update(
+      'people',
+      person.toJson(),
+      where: 'id = ?',
+      whereArgs: [person.id],
+    );
+    print('object updated');
+    await showPeople();
+  }
+
   Future<List<Person>> showPeople() async {
     final db = await database;
     final result = await db.query('people');
