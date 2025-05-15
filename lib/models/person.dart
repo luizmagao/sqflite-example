@@ -3,7 +3,7 @@ class Person {
   String? name;
   int? age;
 
-  Person({this.id, this.name, this.age});
+  Person({this.id, required this.name, this.age});
 
   Person.fromJson(Map<String, dynamic> json) {
     id = json['id'];

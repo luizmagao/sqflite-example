@@ -17,6 +17,7 @@ class _AddScreenState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Adicionando Person')),
       body: Center(
         child: Column(
           children: [
