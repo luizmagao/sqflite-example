@@ -43,6 +43,21 @@ class SqfliteDb {
     await showPeople();
   }
 
+  void updatePerson(Person person) async {
+    final db = await database; // Abre/pega a instância do banco
+
+    // Atualiza o registro com base no ID
+    db.update(
+      'people', // Nome da tabela
+      person.toJson(), // Dados atualizados
+      where: 'id = ?', // Condição
+      whereArgs: [person.id], // Valor da condição
+    );
+
+    print('Pessoa atualizada: ${person.name}');
+    await showPeople();
+  }
+
   Future<List<Person>> showPeople() async {
     final db = await database;
     final result = await db.query('people');
