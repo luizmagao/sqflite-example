@@ -17,7 +17,7 @@ class _AddScreenState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Adicionando Person')),
+      appBar: AppBar(title: Text('Adicionando Pessoa')),
       body: Center(
         child: Column(
           children: [
@@ -48,6 +48,8 @@ class _AddScreenState extends State<AddScreen> {
                   );
 
                   _database.insertPerson(person);
+
+                  Navigator.pushReplacementNamed(context, 'home');
                 } catch (error) {
                   print(error);
                 }
