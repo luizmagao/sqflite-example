@@ -7,6 +7,14 @@ class PersonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(child: Text(person.name.toString()));
+    // return Card(child: Text(person.name.toString()));
+    return ListTile(
+      title: Text(person.name.toString()),
+      subtitle: Text('Idade: ${person.age.toString()}'),
+      trailing: IconButton(
+        onPressed: () => {Navigator.pushNamed(context, 'edit_person')},
+        icon: Icon(Icons.edit, color: Colors.blueAccent),
+      ),
+    );
   }
 }
